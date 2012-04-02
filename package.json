@@ -2,8 +2,12 @@
   "name": "websocketTest",
   "description": "application with socket.io",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.6.x",
+    "npm":  "1.0.x"
+  },
     "dependencies": {
-    "socket.io":"0.8.4",
+    "socket.io": "0.8.4",
     "socket.io-client": "0.8.4"
   }
 }
