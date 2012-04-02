@@ -1,6 +1,6 @@
 var app = require('http').createServer(handler)
   , io = require('socket.io').listen(app)
-  , fs = require('fs')
+  , fs = require('fs');
   
 var port = process.env.PORT || 3000;
 app.listen(port);
@@ -9,17 +9,20 @@ io.configure('production', function(){
   io.enable('browser client etag');
   io.set('log level', 1);
 
-  io.set('transports', [
-    'websocket'
-  , 'flashsocket'
+  /*io.set('transports', [
+   'websocket', // - no websockets on Heoruku for now =(
+   'flashsocket'
   , 'htmlfile'
   , 'xhr-polling'
   , 'jsonp-polling'
-  ]);
+  ]);*/
 });
 
+
 io.configure('development', function(){
-  io.set('transports', ['websocket']);
+  //io.set('transports', ['websocket']);
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10); 
 });
 
 function handler (req, res) {
